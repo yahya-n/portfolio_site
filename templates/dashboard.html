@@ -555,9 +555,14 @@
 <!-- Chart.js -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+
+
+<script id="analytics-data" type="application/json">
+        {{ analytics | tojson | safe}}
+</script>
 <script>
-    // ---------- Data from Flask ----------
-    const analytics = {{ analytics | tojson }};
+
+    var analytics = JSON.parse(document.getElementById('analytics-data').textContent);
 
     // ---------- Theme Toggle ----------
     function applyTheme(theme) {

@@ -246,5 +246,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
 
-    });
-}
+    } catch (e) {
+        console.error("GSAP initialization error:", e);
+    }
+});
