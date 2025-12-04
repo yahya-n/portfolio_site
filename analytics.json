@@ -2,11 +2,11 @@
     "daily_visits": {
         "2025-12-03": 174,
         "2025-12-04": 455,
-        "2025-12-05": 115
+        "2025-12-05": 134
     },
     "page_views": {
-        "/": 501,
-        "/projects": 99,
+        "/": 505,
+        "/projects": 114,
         "/.well-known/appspecific/com.chrome.devtools.json": 111,
         "/contact": 11,
         "/download_resume": 4,
