@@ -20,43 +20,25 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-</head>
-
-<body class="bg-dark text-white">
-
-    <!-- Preloader -->
-    <div id="preloader">
-        <div class="loader-content">
-            <span class="loader-text">{{ data.profile.name if data and data.profile else 'Portfolio' }}</span>
-            <div class="loader-bar"></div>
-        </div>
+    }}<span class="text-primary">/&gt;</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('index') }}#home">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('index') }}#about">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('index') }}#skills">Skills</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('projects') }}">Projects</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('index') }}#contact">Contact</a></li>
+            {% if session.get('logged_in') %}
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('dashboard') }}">Dashboard</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('logout') }}">Logout</a></li>
+            {% endif %}
+        </ul>
     </div>
-
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg fixed-top navbar-dark glass-nav">
-        <div class="container">
-            <a class="navbar-brand fw-bold" href="{{ url_for('index') }}">
-                <span class="text-primary">&lt;</span>{{ data.profile.name if data and data.profile else 'Portfolio'
-                }}<span class="text-primary">/&gt;</span>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="{{ url_for('index') }}#home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ url_for('index') }}#about">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ url_for('index') }}#skills">Skills</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ url_for('projects') }}">Projects</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ url_for('index') }}#contact">Contact</a></li>
-                    {% if session.get('logged_in') %}
-                    <li class="nav-item"><a class="nav-link" href="{{ url_for('dashboard') }}">Dashboard</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ url_for('logout') }}">Logout</a></li>
-                    {% endif %}
-                </ul>
-            </div>
-        </div>
+    </div>
     </nav>
 
     <!-- Flash Messages -->
@@ -93,6 +75,6 @@
 
     <!-- Custom JS -->
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-</body>
+    </body>
 
 </html>
