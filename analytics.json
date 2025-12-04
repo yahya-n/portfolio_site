@@ -1,0 +1,28 @@
+{
+    "daily_visits": {
+        "2025-12-03": 174,
+        "2025-12-04": 328
+    },
+    "page_views": {
+        "/": 306,
+        "/projects": 67,
+        "/.well-known/appspecific/com.chrome.devtools.json": 98,
+        "/contact": 11,
+        "/download_resume": 2,
+        "/favicon.ico": 3,
+        "/www.linkedin.com/in/yahya-cs-engineer": 4,
+        "/debug/email": 11
+    },
+    "section_views": {
+        "home": 19,
+        "about": 19,
+        "skills": 3,
+        "projects": 18,
+        "certifications": 18,
+        "contact": 15
+    },
+    "interactions": {
+        "contact_submit": 11,
+        "resume_download": 2
+    }
+}

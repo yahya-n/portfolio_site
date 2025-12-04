@@ -1,0 +1,316 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- Ambient Background -->
+<div class="ambient-bg">
+    <div class="ambient-orb orb-1"></div>
+    <div class="ambient-orb orb-2"></div>
+    <div class="ambient-orb orb-3"></div>
+</div>
+
+<!-- ===========================
+        HERO SECTION
+================================================ -->
+<section id="home" class="hero-section">
+    <div class="container">
+        <div class="row align-items-center">
+
+            <!-- Left: Text -->
+            <div class="col-lg-7 text-center text-lg-start reveal-left">
+                <span class="hero-subtitle">Hello, I'm</span>
+                <h1 class="hero-title">{{ data.profile.name }}</h1>
+                <h2 class="hero-role">
+                    {{ data.profile.title }}
+                </h2>
+                <p class="hero-description mx-auto mx-lg-0">
+                    {{ data.profile.intro }}
+                </p>
+                <div class="d-flex gap-3 justify-content-center justify-content-lg-start">
+                    <a href="#contact" class="btn-custom">
+                        Let's Talk <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="#projects" class="btn-outline-custom">
+                        View Work
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right: Image -->
+            <div class="col-lg-5 d-flex justify-content-center position-relative reveal-right delay-200">
+                <div class="hero-image-wrapper">
+                    <div class="hero-circle-bg"></div>
+                    <img src="{{ data.profile.image }}" class="hero-image" alt="Profile">
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ===========================
+        ABOUT + SKILLS
+================================================ -->
+<section id="about" class="py-5">
+    <div class="container">
+        <div class="row g-5">
+
+            <!-- Left: About Text -->
+            <div class="col-lg-6 reveal-left">
+                <div class="section-title mb-4">
+                    <h2>About Me</h2>
+                    <p>{{ data.profile.bio }}</p>
+                </div>
+                <a href="{{ url_for('download_resume') }}" target="_blank" class="btn btn-custom">
+                    <i class="fas fa-download"></i> Download Resume
+                </a>
+            </div>
+
+            <!-- Right: Skills & Education -->
+            <div class="col-lg-6 reveal-right delay-200">
+
+                <h4 class="mb-4 text-purple">Technical Skills</h4>
+                <div class="mb-5">
+                    {% for skill in data.skills %}
+                    <span class="skill-tag">{{ skill }}</span>
+                    {% endfor %}
+                </div>
+
+                <h4 class="mb-4 text-purple">Education</h4>
+                {% for edu in data.education %}
+                <div class="education-card">
+                    <div class="icon-badge bg-darker">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="flex-grow-1">
+                        <h5 class="mb-1">{{ edu.degree }}</h5>
+                        <p class="text-muted small mb-0">{{ edu.institution }}</p>
+                    </div>
+                    <span class="year">{{ edu.year }}</span>
+                </div>
+                {% endfor %}
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ===========================
+        PROJECTS
+================================================ -->
+<section id="projects" class="py-5">
+    <div class="container py-5">
+
+        <div class="d-flex justify-content-between align-items-end mb-5 section-title reveal">
+            <div>
+                <h2 class="display-5 fw-bold">Featured Projects</h2>
+                <p class="text-secondary">Some of my recent work</p>
+            </div>
+
+            <a href="{{ url_for('projects') }}" class="view-all">
+                View All <i class="fas fa-arrow-right ms-1"></i>
+            </a>
+        </div>
+
+        <!-- Horizontal Scroll Container -->
+        <div class="horizontal-scroll-container reveal delay-100">
+            {% for project in data.projects %}
+            {% if project.featured %}
+            <div class="horizontal-card-item">
+                <div class="project-card">
+
+                    <div class="project-img-wrapper">
+                        <img src="{{ project.image }}" class="project-img" alt="{{ project.title }}">
+                    </div>
+
+                    <div class="project-content">
+                        <h4 class="fw-bold mb-2">{{ project.title }}</h4>
+                        <p class="text-secondary small mb-3 text-purple">{{ project.technologies }}</p>
+                        <p class="text-secondary mb-4 small">{{ project.description }}</p>
+
+                        <div class="d-flex gap-2 mt-auto">
+                            <a href="{{ project.github_link }}" target="_blank" class="btn-code">
+                                <i class="fab fa-github"></i> Code
+                            </a>
+
+                            {% if project.live_link %}
+                            <a href="{{ project.live_link }}" target="_blank" class="btn-code">
+                                <i class="fas fa-external-link-alt"></i> Demo
+                            </a>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+
+    </div>
+</section>
+
+<!-- ===========================
+        CERTIFICATIONS
+================================================ -->
+<section id="certifications" class="py-5 bg-darker">
+    <div class="container py-5">
+        <h2 class="text-center display-5 fw-bold mb-5 reveal">Certifications</h2>
+
+        <!-- Horizontal Scroll Container -->
+        <div class="horizontal-scroll-container reveal delay-100">
+            {% for cert in data.certifications %}
+            <div class="horizontal-card-item">
+                <div class="cert-card" data-cert-index="{{ loop.index0 }}">
+                    <div class="icon-badge mb-3">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h5 class="fw-bold mb-2">{{ cert.title }}</h5>
+                    <p class="text-secondary small mb-2">{{ cert.organization }}</p>
+                    <p class="text-secondary small mb-2">{{ cert.date }}</p>
+                    <a href="{{ cert.link }}" target="_blank" class="view-all" style="font-size: 0.9rem;"
+                        onclick="event.stopPropagation()">
+                        View Credential <i class="fas fa-arrow-right ms-1"></i>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- ===========================
+        CONTACT - PREMIUM VERSION
+================================================ -->
+<section id="contact" class="py-5 position-relative">
+
+    <!-- Premium Grid Background -->
+    <div class="premium-grid-bg"></div>
+
+    <div class="container py-5 position-relative" style="z-index: 2;">
+
+        <!-- Section Header -->
+        <div class="text-center mb-5 reveal">
+            <div class="premium-badge mb-3">
+                <span class="badge-dot"></span>
+                <span class="text-purple small fw-bold">Available for new projects</span>
+            </div>
+            <h2 class="display-4 fw-bold mb-3">Let's Work Together</h2>
+            <p class="lead text-secondary mx-auto" style="max-width: 600px;">
+                Transform your vision into reality. Reach out to discuss your project requirements.
+            </p>
+        </div>
+
+        <div class="row justify-content-center align-items-start g-4">
+
+            <!-- Left - Contact Information -->
+            <div class="col-lg-5 reveal-left">
+
+                <!-- Main Contact Card -->
+                <div class="premium-contact-card p-4 mb-4">
+                    <div class="premium-card-header mb-4 d-flex align-items-center gap-3">
+                        <div class="icon-badge">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <div>
+                            <h4 class="fw-bold mb-1">Let's Discuss Your Project</h4>
+                            <p class="text-secondary small mb-0">I typically respond within 24 hours</p>
+                        </div>
+                    </div>
+
+                    <!-- Contact Methods -->
+                    <div class="contact-methods d-flex flex-column gap-3">
+                        <a href="mailto:{{ data.contact.email }}"
+                            class="contact-method-item d-flex align-items-center gap-3 p-3 rounded bg-darker text-decoration-none">
+                            <div class="icon-badge small">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="method-content">
+                                <span class="d-block text-muted small">Email</span>
+                                <span class="fw-bold text-white">{{ data.contact.email }}</span>
+                            </div>
+                        </a>
+
+                        <div class="contact-method-item d-flex align-items-center gap-3 p-3 rounded bg-darker">
+                            <div class="icon-badge small">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="method-content">
+                                <span class="d-block text-muted small">Location</span>
+                                <span class="fw-bold text-white">{{ data.contact.location }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Professional Links -->
+                <div class="premium-social-card p-4">
+                    <h5 class="fw-bold mb-3">Professional Networks</h5>
+                    <div class="d-flex gap-3">
+                        <a href="{{ data.contact.linkedin }}" target="_blank" class="btn btn-outline-custom">
+                            <i class="fab fa-linkedin-in"></i> LinkedIn
+                        </a>
+
+                        <a href="{{ data.contact.github }}" target="_blank" class="btn btn-outline-custom">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Right - Contact Form -->
+            <div class="col-lg-7 reveal-right delay-200">
+                <div class="premium-form-card p-5">
+
+                    <h3 class="fw-bold mb-2">Send a Message</h3>
+                    <p class="text-secondary mb-4">Fill out the form below and I'll get back to you as soon as possible.
+                    </p>
+
+                    <form action="{{ url_for('contact') }}" method="POST" id="premiumContactForm">
+
+                        <div class="row g-4 mb-4">
+                            <!-- Name Input -->
+                            <div class="col-md-6">
+                                <label class="text-muted small mb-2">Full Name *</label>
+                                <input type="text" name="name" class="premium-input" placeholder="John Doe" required>
+                            </div>
+
+                            <!-- Email Input -->
+                            <div class="col-md-6">
+                                <label class="text-muted small mb-2">Email Address *</label>
+                                <input type="email" name="email" class="premium-input" placeholder="john@example.com"
+                                    required>
+                            </div>
+
+                            <!-- Subject Input -->
+                            <div class="col-12">
+                                <label class="text-muted small mb-2">Subject *</label>
+                                <input type="text" name="subject" class="premium-input" placeholder="Project discussion"
+                                    required>
+                            </div>
+
+                            <!-- Message Textarea -->
+                            <div class="col-12">
+                                <label class="text-muted small mb-2">Message *</label>
+                                <textarea name="message" class="premium-input" rows="5"
+                                    placeholder="Tell me about your project..." required></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="premium-submit-btn">
+                            Send Message <i class="fas fa-paper-plane ms-2"></i>
+                        </button>
+
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+{% endblock %}

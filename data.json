@@ -1,0 +1,112 @@
+{
+    "profile": {
+        "name": "Yahya",
+        "full_name": "Abdul Kuddoos Yahya",
+        "title": "Computer Science Engineer | Developer",
+        "intro": "Passionate about building scalable software and solving complex problems.",
+        "bio": "I am a Computer Science Engineer with a strong foundation in software development. I love exploring new technologies and building meaningful projects.",
+        "image": "/static/uploads/yahya-removebg-preview.png",
+        "resume_link": "/static/uploads/AbdulKuddoosYahyaAResume_5.pdf"
+    },
+    "education": [
+        {
+            "degree": "B.Tech Computer Science and Engineering",
+            "institution": "Vel Tech University",
+            "year": "2023 - 2027"
+        }
+    ],
+    "skills": [
+        "Python",
+        "Java",
+        "C / C++",
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "Git & GitHub",
+        "SQL",
+        "Django / Flask",
+        "Cloud basics",
+        "Data Structures & Algorithms"
+    ],
+    "certifications": [
+        {
+            "title": "Certified Python Developer",
+            "organization": "Python Institute",
+            "date": "2023",
+            "link": "#",
+            "description": "Professional certification in Python programming."
+        },
+        {
+            "title": "Introduction to cybersecurity",
+            "organization": "Cisco",
+            "date": "2025",
+            "link": "#",
+            "description": "Professional certification in Introduction to cybersecurity."
+        },
+        {
+            "title": "Sample",
+            "organization": "Sample org",
+            "date": "2024",
+            "link": "#",
+            "description": ""
+        },
+        {
+            "title": "Sample2",
+            "organization": "Sample orgs",
+            "date": "2024",
+            "link": "#",
+            "description": "Hdhhdhfhfhdh"
+        }
+    ],
+    "projects": [
+        {
+            "title": "cyber hygiene analysis",
+            "description": "shfsjdks",
+            "technologies": "Python ,nmap , owsap",
+            "github_link": "#",
+            "image": "/static/uploads/dfd_2.png",
+            "featured": true
+        },
+        {
+            "title": "Business LAnding Page",
+            "description": "business landing page for yoga online tuter",
+            "technologies": "Python , django , js , html, css",
+            "github_link": "#",
+            "image": "/static/uploads/Green_Yellow_Modern_Yoga_Class_For_Beginners_Facebook_Ad.png",
+            "featured": true
+        },
+        {
+            "title": "sample",
+            "description": "sample discription",
+            "technologies": "js , tailwind",
+            "github_link": "#",
+            "image": "/static/uploads/dfd_2.png",
+            "featured": true
+        },
+        {
+            "title": "sample 2",
+            "description": "a;sfkpoadskpkgkpewk",
+            "technologies": ";adfk;sdfka;f",
+            "github_link": "#",
+            "image": "/static/uploads/pngwing.com.png",
+            "featured": true
+        },
+        {
+            "title": "sample 3",
+            "description": "akfpkksffkgfkfdkgfkflmlgordkhps",
+            "technologies": "Python ,nmap , owsap",
+            "github_link": "#",
+            "image": "/static/uploads/dfd_0.png",
+            "featured": true
+        }
+    ],
+    "contact": {
+        "email": "abdulkuddoosyahya@gmail.com",
+        "linkedin": "https://www.linkedin.com/in/yahya-cs-engineer",
+        "github": "https://github.com/yahya-n",
+        "twitter": "",
+        "instagram": "",
+        "dribbble": "",
+        "location": "Chennai"
+    }
+}
