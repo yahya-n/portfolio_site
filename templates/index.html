@@ -7,37 +7,47 @@
     <div class="ambient-orb orb-1"></div>
     <div class="ambient-orb orb-2"></div>
     <div class="ambient-orb orb-3"></div>
+    <div class="ambient-orb orb-4"></div>
 </div>
 
 <!-- ===========================
-        HERO SECTION
+        HERO SECTION (LEFT-ALIGNED MOBILE)
 ================================================ -->
 <section id="home" class="hero-section">
     <div class="container">
         <div class="row align-items-center">
 
-            <!-- Left: Text -->
-            <div class="col-lg-7 text-center text-lg-start reveal-left">
+            <!-- LEFT CONTENT -->
+            <div class="col-lg-7 hero-content text-start reveal-left">
+
                 <span class="hero-subtitle">Hello, I'm</span>
-                <h1 class="hero-title">{{ data.profile.name }}</h1>
+
+                <h1 class="hero-title">
+                    {{ data.profile.name }}
+                </h1>
+
                 <h2 class="hero-role">
                     {{ data.profile.title }}
                 </h2>
-                <p class="hero-description mx-auto mx-lg-0">
+
+                <p class="hero-description">
                     {{ data.profile.intro }}
                 </p>
-                <div class="d-flex gap-3 justify-content-center justify-content-lg-start">
+
+                <div class="d-flex gap-3 mt-4">
                     <a href="#contact" class="btn-custom">
                         Let's Talk <i class="fas fa-arrow-right"></i>
                     </a>
+
                     <a href="#projects" class="btn-outline-custom">
                         View Work
                     </a>
                 </div>
             </div>
 
-            <!-- Right: Image -->
-            <div class="col-lg-5 d-flex justify-content-center position-relative reveal-right delay-200">
+            <!-- RIGHT IMAGE -->
+            <div
+                class="col-lg-5 d-flex justify-content-center position-relative reveal-right delay-200 hero-image-block">
                 <div class="hero-image-wrapper">
                     <div class="hero-circle-bg"></div>
                     <img src="{{ data.profile.image }}" class="hero-image" alt="Profile">
@@ -108,11 +118,11 @@
                 <p class="text-secondary">Some of my recent work</p>
             </div>
 
-            <a href="{{ url_for('projects') }}" class="view-all">
-                View All <i class="fas fa-arrow-right ms-1"></i>
-            </a>
-        </div>
 
+        </div>
+        <a href="{{ url_for('projects') }}" class="view-all">
+            View All <i class="fas fa-arrow-right ms-1"></i>
+        </a>
     </div>
 
     <!-- Horizontal Scroll Container -->

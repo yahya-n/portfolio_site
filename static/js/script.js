@@ -215,23 +215,36 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         // Navbar Scroll Effect (Glassmorphism enhancement)
-        const navbar = document.querySelector('.navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.style.background = 'rgba(10, 10, 10, 0.9)';
-                navbar.style.boxShadow = '0 4px 30px rgba(0,0,0,0.3)';
+        // NAVBAR SHRINK ON SCROLL
+        window.addEventListener("scroll", () => {
+            const nav = document.querySelector(".navbar");
+            if (window.scrollY > 80) {
+                nav.classList.add("shrink");
             } else {
-                navbar.style.background = 'rgba(10, 10, 10, 0.6)';
-                navbar.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.3)';
+                nav.classList.remove("shrink");
             }
         });
 
-    } catch (error) {
-        console.error("GSAP Animation Error:", error);
-        // Emergency visibility restore
-        document.querySelectorAll('*').forEach(el => {
-            if (el.style.opacity === '0') el.style.opacity = '1';
-        });
-    }
+        // AUTO ACTIVE LINK HIGHLIGHT BASED ON SCROLL
+        const sections = document.querySelectorAll("section[id]");
+        const navLinks = document.querySelectorAll(".nav-link");
 
-});
+        window.addEventListener("scroll", () => {
+            let scrollPos = window.pageYOffset + 150;
+
+            sections.forEach((sec) => {
+                if (scrollPos >= sec.offsetTop && scrollPos < sec.offsetTop + sec.offsetHeight) {
+                    let id = sec.getAttribute("id");
+
+                    navLinks.forEach((link) => {
+                        link.classList.remove("active");
+                        if (link.getAttribute("href").includes(id)) {
+                            link.classList.add("active");
+                        }
+                    });
+                }
+            });
+        });
+
+    });
+}
