@@ -149,7 +149,7 @@ document.addEventListener('DOMContentLoaded', function () {
             ease: "power3.out"
         });
 
-        // Projects & Certifications (Horizontal Scroll Reveal)
+        // Projects & Certifications (Grid Reveal)
         const scrollContainers = document.querySelectorAll('.horizontal-scroll-container');
         scrollContainers.forEach(container => {
             gsap.from(container.children, {
@@ -157,7 +157,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     trigger: container,
                     start: "top 85%"
                 },
-                x: 100,
+                y: 50, // Changed from x: 100 to y: 50 for a nice upward float
                 opacity: 0,
                 duration: 0.8,
                 stagger: 0.1,

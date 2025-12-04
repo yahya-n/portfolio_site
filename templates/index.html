@@ -113,41 +113,41 @@
             </a>
         </div>
 
-        <!-- Horizontal Scroll Container -->
-        <div class="horizontal-scroll-container reveal delay-100">
-            {% for project in data.projects %}
-            {% if project.featured %}
-            <div class="horizontal-card-item">
-                <div class="project-card">
+    </div>
 
-                    <div class="project-img-wrapper">
-                        <img src="{{ project.image }}" class="project-img" alt="{{ project.title }}">
-                    </div>
+    <!-- Horizontal Scroll Container -->
+    <div class="horizontal-scroll-container reveal delay-100">
+        {% for project in data.projects %}
+        {% if project.featured %}
+        <div class="horizontal-card-item">
+            <div class="project-card">
 
-                    <div class="project-content">
-                        <h4 class="fw-bold mb-2">{{ project.title }}</h4>
-                        <p class="text-secondary small mb-3 text-purple">{{ project.technologies }}</p>
-                        <p class="text-secondary mb-4 small">{{ project.description }}</p>
-
-                        <div class="d-flex gap-2 mt-auto">
-                            <a href="{{ project.github_link }}" target="_blank" class="btn-code">
-                                <i class="fab fa-github"></i> Code
-                            </a>
-
-                            {% if project.live_link %}
-                            <a href="{{ project.live_link }}" target="_blank" class="btn-code">
-                                <i class="fas fa-external-link-alt"></i> Demo
-                            </a>
-                            {% endif %}
-                        </div>
-                    </div>
-
+                <div class="project-img-wrapper">
+                    <img src="{{ project.image }}" class="project-img" alt="{{ project.title }}">
                 </div>
-            </div>
-            {% endif %}
-            {% endfor %}
-        </div>
 
+                <div class="project-content">
+                    <h4 class="fw-bold mb-2">{{ project.title }}</h4>
+                    <p class="text-secondary small mb-3 text-purple">{{ project.technologies }}</p>
+                    <p class="text-secondary mb-4 small">{{ project.description }}</p>
+
+                    <div class="d-flex gap-2 mt-auto">
+                        <a href="{{ project.github_link }}" target="_blank" class="btn-code">
+                            <i class="fab fa-github"></i> Code
+                        </a>
+
+                        {% if project.live_link %}
+                        <a href="{{ project.live_link }}" target="_blank" class="btn-code">
+                            <i class="fas fa-external-link-alt"></i> Demo
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
     </div>
 </section>
 
@@ -273,27 +273,27 @@
                         <div class="row g-4 mb-4">
                             <!-- Name Input -->
                             <div class="col-md-6">
-                                <label class="text-muted small mb-2">Full Name *</label>
+                                <label class="text-secondary small mb-2">Full Name *</label>
                                 <input type="text" name="name" class="premium-input" placeholder="John Doe" required>
                             </div>
 
                             <!-- Email Input -->
                             <div class="col-md-6">
-                                <label class="text-muted small mb-2">Email Address *</label>
+                                <label class="text-secondary small mb-2">Email Address *</label>
                                 <input type="email" name="email" class="premium-input" placeholder="john@example.com"
                                     required>
                             </div>
 
                             <!-- Subject Input -->
                             <div class="col-12">
-                                <label class="text-muted small mb-2">Subject *</label>
+                                <label class="text-secondary small mb-2">Subject *</label>
                                 <input type="text" name="subject" class="premium-input" placeholder="Project discussion"
                                     required>
                             </div>
 
                             <!-- Message Textarea -->
                             <div class="col-12">
-                                <label class="text-muted small mb-2">Message *</label>
+                                <label class="text-secondary small mb-2">Message *</label>
                                 <textarea name="message" class="premium-input" rows="5"
                                     placeholder="Tell me about your project..." required></textarea>
                             </div>

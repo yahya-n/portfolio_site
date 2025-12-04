@@ -528,53 +528,39 @@ section {
 .year {
     font-size: 0.85rem;
     color: var(--text-muted);
-    background: rgba(255, 255, 255, 0.05);
-    padding: 4px 12px;
-    border-radius: 50px;
 }
 
-/* =============================================
-   HORIZONTAL SCROLLABLE CONTAINERS
-================================================ */
-.horizontal-scroll-container {
-    display: flex;
-    overflow-x: auto;
-    gap: 2rem;
-    padding: 1rem 0 2rem 0;
-    /* Bottom padding for scrollbar/shadow */
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: thin;
-    /* Firefox */
-}
-
-/* Hide scrollbar for cleaner look but keep functionality */
-.horizontal-scroll-container::-webkit-scrollbar {
-    height: 6px;
-}
-
-.horizontal-scroll-container::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-.horizontal-scroll-container::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-}
-
-.horizontal-scroll-container::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.2);
-}
-
-.horizontal-card-item {
-    flex: 0 0 auto;
-    width: 350px;
-    /* Fixed width for cards */
-}
 
 /* =============================================
    PROJECT CARDS
 ================================================ */
+/* Horizontal Scroll Styles */
+.horizontal-scroll-container {
+    display: flex;
+    overflow-x: auto;
+    width: 100%;
+    padding: 20px 5%;
+    gap: 30px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-behavior: smooth;
+}
+
+.horizontal-scroll-container::-webkit-scrollbar {
+    display: none;
+}
+
+.horizontal-card-item {
+    flex: 0 0 auto;
+    width: 400px;
+}
+
+@media (max-width: 768px) {
+    .horizontal-card-item {
+        width: 300px;
+    }
+}
+
 .project-card {
     background: var(--bg-card);
     border: 1px solid var(--border-color);
