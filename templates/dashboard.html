@@ -245,6 +245,9 @@
     <aside class="sidebar" id="sidebar">
         <div class="brand">
             <i class="fas fa-layer-group"></i> Admin Panel
+            <button class="btn btn-sm btn-outline-secondary d-md-none ms-auto" id="sidebarClose">
+                <i class="fas fa-times"></i>
+            </button>
         </div>
 
         <nav class="nav flex-column nav-pills" id="v-pills-tab" role="tablist">
@@ -721,9 +724,17 @@
     // --- Sidebar Mobile Toggle ---
     const sidebar = document.getElementById('sidebar');
     const sidebarToggle = document.getElementById('sidebarToggle');
+    const sidebarClose = document.getElementById('sidebarClose');
+
     sidebarToggle.addEventListener('click', () => {
         sidebar.classList.toggle('active');
     });
+
+    if (sidebarClose) {
+        sidebarClose.addEventListener('click', () => {
+            sidebar.classList.remove('active');
+        });
+    }
 
     // --- Image Preview ---
     const fileInput = document.getElementById('imageFileInput');

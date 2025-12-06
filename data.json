@@ -89,7 +89,7 @@
             "technologies": ";adfk;sdfka;f",
             "github_link": "#",
             "image": "/static/uploads/pngwing.com.png",
-            "featured": true
+            "featured": false
         },
         {
             "title": "sample 3",
@@ -97,7 +97,7 @@
             "technologies": "Python ,nmap , owsap",
             "github_link": "#",
             "image": "/static/uploads/dfd_0.png",
-            "featured": true
+            "featured": false
         }
     ],
     "contact": {

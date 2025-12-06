@@ -2,8 +2,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Fallback: Make everything visible if GSAP fails or takes too long
     setTimeout(() => {
-        document.querySelectorAll('.hero-subtitle, .hero-title, .hero-role, .hero-description, .hero-image-wrapper, .navbar, .section-title, .skill-tag, .education-card, .project-card, .cert-card, .premium-contact-card').forEach(el => {
-            if (getComputedStyle(el).opacity === '0') {
+        document.querySelectorAll('.hero-subtitle, .hero-title, .hero-role, .hero-description, .hero-image-wrapper, .navbar, .section-title, .skill-tag, .education-card, .project-card, .cert-card, .premium-contact-card, .btn-custom, .btn-outline-custom, .reveal-left, .reveal-right').forEach(el => {
+            if (getComputedStyle(el).opacity < '1') {
                 el.style.opacity = '1';
                 el.style.transform = 'none';
             }
