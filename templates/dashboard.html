@@ -347,7 +347,7 @@
                         <div class="glass-panel p-4">
                             <h4 class="fw-bold mb-4 text-white">Personal Details</h4>
                             <form method="POST" enctype="multipart/form-data">
-                                <input type="hidden" name="update_profile" value="1">
+                                <input type="hidden" name="update_profile_details" value="1">
                                 <div class="row g-3">
                                     <div class="col-md-6">
                                         <label class="text-sm-label">Full Name</label>
@@ -388,7 +388,7 @@
                                     style="width: 120px; height: 120px; object-fit: cover; border: 3px solid rgba(255,255,255,0.1);">
                             </div>
                             <form method="POST" enctype="multipart/form-data">
-                                <input type="hidden" name="update_profile" value="1">
+                                <input type="hidden" name="update_profile_assets" value="1">
                                 <input type="file" class="form-control mb-2" name="image_file" id="imageFileInput">
                                 <input type="text" class="form-control mb-2" name="image"
                                     value="{{ data.profile.image }}" placeholder="Image URL">

@@ -204,13 +204,15 @@ def dashboard():
                         return None
             return None
 
-        # Update Profile
-        if 'update_profile' in request.form:
+        # Update Profile Details
+        if 'update_profile_details' in request.form:
             data['profile']['name'] = request.form.get('name')
             data['profile']['title'] = request.form.get('title')
             data['profile']['intro'] = request.form.get('intro')
             data['profile']['bio'] = request.form.get('bio')
             
+        # Update Profile Assets
+        elif 'update_profile_assets' in request.form:
             img_path = save_uploaded_file('image_file')
             if img_path:
                 data['profile']['image'] = img_path
