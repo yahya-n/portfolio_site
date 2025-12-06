@@ -5,7 +5,10 @@ import os
 from werkzeug.utils import secure_filename
 from datetime import datetime
 import re
+import re
 from config import config
+import cloudinary
+import cloudinary.uploader
 
 app = Flask(__name__)
 
@@ -177,14 +180,28 @@ def dashboard():
     analytics = load_analytics()
     
     if request.method == 'POST':
-        # Helper to save file
+        # Helper to save file (Cloudinary Version)
         def save_uploaded_file(file_key):
             if file_key in request.files:
                 file = request.files[file_key]
                 if file and file.filename != '' and allowed_file(file.filename):
-                    filename = secure_filename(file.filename)
-                    file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-                    return f"/static/uploads/{filename}"
+                    try:
+                        # Configure Cloudinary (idempotent)
+                        if app.config.get('CLOUDINARY_URL'):
+                            upload_result = cloudinary.uploader.upload(
+                                file,
+                                folder="portfolio_assets",
+                                resource_type="auto"
+                            )
+                            return upload_result.get('secure_url')
+                        else:
+                            # Fallback to local if no Cloudinary URL
+                            filename = secure_filename(file.filename)
+                            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+                            return f"/static/uploads/{filename}"
+                    except Exception as e:
+                        flash(f"Error uploading file: {str(e)}", "danger")
+                        return None
             return None
 
         # Update Profile
@@ -314,21 +331,26 @@ def dashboard():
 
         # Update Certifications
         elif 'update_certs' in request.form:
-            titles = request.form.getlist('cert_title')
-            orgs = request.form.getlist('cert_org')
-            dates = request.form.getlist('cert_date')
-            links = request.form.getlist('cert_link')
-            descs = request.form.getlist('cert_desc')
-            
             new_certs = []
-            for i in range(len(titles)):
+            i = 0
+            while True:
+                title_key = f'cert_title_{i}'
+                if title_key not in request.form:
+                    break
+                
+                # Check for deletion flag
+                if request.form.get(f'delete_cert_{i}') == '1':
+                    i += 1
+                    continue
+
                 new_certs.append({
-                    'title': titles[i],
-                    'organization': orgs[i],
-                    'date': dates[i],
-                    'link': links[i],
-                    'description': descs[i]
+                    'title': request.form.get(title_key),
+                    'organization': request.form.get(f'cert_org_{i}'),
+                    'date': request.form.get(f'cert_date_{i}'),
+                    'link': request.form.get(f'cert_link_{i}'),
+                    'description': request.form.get(f'cert_desc_{i}')
                 })
+                i += 1
             data['certifications'] = new_certs
 
         # Add New Certification

@@ -20,6 +20,9 @@ class Config:
     ADMIN_USERNAME = os.getenv('ADMIN_USERNAME', 'admin')
     ADMIN_PASSWORD = os.getenv('ADMIN_PASSWORD', 'password123')
     
+    # Cloudinary Config
+    CLOUDINARY_URL = os.getenv('CLOUDINARY_URL')
+    
     # Security Defaults
     SESSION_COOKIE_SECURE = False
     SESSION_COOKIE_HTTPONLY = True
