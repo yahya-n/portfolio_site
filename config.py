@@ -42,15 +42,11 @@ class ProductionConfig(Config):
     REMEMBER_COOKIE_SECURE = True
     
     # Stronger Secret Key enforcement (fail if missing in prod)
-    @property
-    def SECRET_KEY(self):
-        key = os.getenv('SECRET_KEY')
-        if not key:
-            # Fallback for Render deployment if user forgets to set env var
-            # Generates a random key, but sessions will be lost on restart
-            import secrets
-            return secrets.token_hex(16)
-        return key
+    # Stronger Secret Key enforcement (fallback if missing in prod)
+    SECRET_KEY = os.getenv('SECRET_KEY')
+    if not SECRET_KEY:
+        import secrets
+        SECRET_KEY = secrets.token_hex(16)
 
 # Dictionary to map environment names directly to classes
 config = {
