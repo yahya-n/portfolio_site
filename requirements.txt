@@ -3,3 +3,4 @@ Flask-WTF
 Flask-Mail
 email_validator
 python-dotenv
+gunicorn

@@ -2,18 +2,18 @@ from flask import Flask, render_template, request, redirect, url_for, flash, ses
 from flask_mail import Mail, Message
 from utils import load_data, save_data, load_analytics, save_analytics
 import os
-from dotenv import load_dotenv
-
-load_dotenv()
 from werkzeug.utils import secure_filename
 from datetime import datetime
-
 import re
+from config import config
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'default_secret_key_for_dev')
-app.config['UPLOAD_FOLDER'] = os.path.join('static', 'uploads')
-app.config['ALLOWED_EXTENSIONS'] = {'png', 'jpg', 'jpeg', 'gif', 'pdf'}
+
+# Load Configuration
+# Determine environment: 'production' if DEPLOYMENT_MODE is 'true', else 'development'
+deployment_mode = os.getenv('DEPLOYMENT_MODE', 'False').lower() in ['true', '1', 't']
+config_name = 'production' if deployment_mode else 'development'
+app.config.from_object(config[config_name])
 
 # Ensure upload folder exists
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
@@ -22,18 +22,7 @@ def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in app.config['ALLOWED_EXTENSIONS']
 
-# Mail Configuration (Example - User needs to update this)
-app.config['MAIL_SERVER'] = 'smtp.gmail.com'
-app.config['MAIL_PORT'] = 587
-app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME')
-app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD')
-
 mail = Mail(app)
-
-# Admin Credentials
-ADMIN_USERNAME = os.getenv('ADMIN_USERNAME', 'admin')
-ADMIN_PASSWORD = os.getenv('ADMIN_PASSWORD', 'password123')
 
 # Middleware for Analytics
 @app.before_request
@@ -66,6 +55,11 @@ def track_section():
 
 @app.route('/debug/email')
 def debug_email():
+    # Only allow debug routes in development or if specifically enabled? 
+    # For now, let's just use the config, but be careful in prod.
+    if not app.config.get('DEBUG') and not app.config.get('TESTING'):
+         return "Debug routes disabled in production", 403
+
     try:
         username = app.config.get('MAIL_USERNAME')
         password = app.config.get('MAIL_PASSWORD')
@@ -126,7 +120,8 @@ def contact():
             msg.body = f"Name: {name}\nEmail: {email}\n\nMessage:\n{message}"
             mail.send(msg)
             flash('Message sent successfully!', 'success')
-            print(f"Email sent from {name} ({email}): {message}") # Log for dev
+            if app.config.get('DEBUG'):
+                print(f"Email sent from {name} ({email}): {message}") # Log for dev
         except Exception as e:
             import traceback
             traceback.print_exc()
@@ -157,7 +152,8 @@ def login():
         username = request.form.get('username')
         password = request.form.get('password')
         
-        if username == ADMIN_USERNAME and password == ADMIN_PASSWORD:
+        # Use config credentials
+        if username == app.config['ADMIN_USERNAME'] and password == app.config['ADMIN_PASSWORD']:
             session['logged_in'] = True
             flash('Logged in successfully.', 'success')
             return redirect(url_for('dashboard'))
@@ -354,5 +350,5 @@ def dashboard():
 
 
 if __name__ == '__main__':
-    debug_mode = os.getenv('FLASK_DEBUG', 'False').lower() in ['true', '1', 't']
-    app.run(debug=debug_mode)
+    # When running directly, use the configured debug mode
+    app.run(debug=app.config.get('DEBUG', False))

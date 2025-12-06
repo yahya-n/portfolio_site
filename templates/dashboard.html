@@ -10,23 +10,22 @@
         --primary: #6366f1;
         --primary-hover: #4f46e5;
         --secondary: #ec4899;
-        --bg-body: #f3f4f6;
-        --bg-panel: rgba(255, 255, 255, 0.7);
-        --text-main: #1f2937;
-        --text-muted: #6b7280;
-        --border-color: rgba(255, 255, 255, 0.4);
-        --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-        --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+
+        /* Permanent Dark Theme Variables */
+        --bg-body: #0f172a;
+        /* Slate 900 */
+        --bg-panel: rgba(30, 41, 59, 0.7);
+        /* Slate 800 with transparency */
+        --text-main: #f8fafc;
+        /* Slate 50 */
+        --text-muted: #94a3b8;
+        /* Slate 400 */
+        --border-color: rgba(255, 255, 255, 0.08);
+
+        --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+        --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
         --sidebar-width: 260px;
         --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    [data-theme="dark"] {
-        --bg-body: #0f172a;
-        --bg-panel: rgba(30, 41, 59, 0.7);
-        --text-main: #f8fafc;
-        --text-muted: #94a3b8;
-        --border-color: rgba(255, 255, 255, 0.05);
     }
 
     body {
@@ -34,7 +33,6 @@
         color: var(--text-main);
         font-family: 'Inter', system-ui, -apple-system, sans-serif;
         overflow-x: hidden;
-        transition: background-color 0.3s ease;
     }
 
     /* Layout */
@@ -90,13 +88,14 @@
 
     .nav-link:hover,
     .nav-link.active {
-        background: rgba(99, 102, 241, 0.1);
-        color: var(--primary);
+        background: rgba(99, 102, 241, 0.15);
+        color: #fff;
+        /* Brighter white for active state */
+        text-shadow: 0 0 10px rgba(99, 102, 241, 0.4);
     }
 
     .nav-link.active {
         background: var(--primary);
-        color: white;
         box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
     }
 
@@ -119,6 +118,7 @@
     .header h1 {
         font-size: 1.5rem;
         font-weight: 700;
+        color: var(--text-main);
     }
 
     /* Cards */
@@ -134,12 +134,14 @@
 
     .glass-panel:hover {
         box-shadow: var(--shadow-lg);
-        border-color: rgba(99, 102, 241, 0.2);
+        border-color: rgba(99, 102, 241, 0.4);
+        background: rgba(30, 41, 59, 0.85);
     }
 
     /* Forms */
     .form-control {
-        background: rgba(255, 255, 255, 0.05);
+        background: rgba(0, 0, 0, 0.2);
+        /* Darker input background */
         border: 1px solid var(--border-color);
         color: var(--text-main);
         padding: 0.6rem 1rem;
@@ -147,10 +149,17 @@
     }
 
     .form-control:focus {
-        background: rgba(255, 255, 255, 0.1);
+        background: rgba(0, 0, 0, 0.3);
         border-color: var(--primary);
         box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
-        color: var(--text-main);
+        color: #fff;
+    }
+
+    /* Improved Placeholder Colors */
+    .form-control::placeholder {
+        color: rgba(255, 255, 255, 0.35);
+        /* Distinct light gray */
+        opacity: 1;
     }
 
     /* Buttons */
@@ -160,10 +169,38 @@
         padding: 0.6rem 1.5rem;
         border-radius: 0.5rem;
         font-weight: 600;
+        color: white;
     }
 
     .btn-primary:hover {
         background: var(--primary-hover);
+        box-shadow: 0 0 15px rgba(99, 102, 241, 0.4);
+    }
+
+    .btn-outline-secondary {
+        border-color: var(--border-color);
+        color: var(--text-muted);
+    }
+
+    .btn-outline-secondary:hover {
+        background: rgba(255, 255, 255, 0.05);
+        color: var(--text-main);
+        border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Tables */
+    .table {
+        color: var(--text-muted);
+    }
+
+    .table th {
+        color: var(--text-main);
+        font-weight: 600;
+        border-bottom-color: var(--border-color);
+    }
+
+    .table td {
+        border-bottom-color: var(--border-color);
     }
 
     /* Mobile */
@@ -196,7 +233,8 @@
         text-transform: uppercase;
         letter-spacing: 0.05em;
         font-weight: 600;
-        color: var(--text-muted);
+        color: rgba(255, 255, 255, 0.5);
+        /* Lighter label for dark mode */
         margin-bottom: 0.5rem;
         display: block;
     }
@@ -242,15 +280,12 @@
                 <h1>Dashboard</h1>
             </div>
             <div class="d-flex align-items-center gap-3">
-                <button id="themeToggle" class="btn btn-outline-secondary rounded-circle"
-                    style="width: 40px; height: 40px;">
-                    <i class="fas fa-moon"></i>
-                </button>
+                <!-- Theme toggle removed (Dark mode is now enforced) -->
                 <div class="d-none d-md-block text-end">
-                    <small class="text-muted d-block" style="line-height: 1;">Welcome back,</small>
-                    <span style="font-weight: 600;">{{ data.profile.name }}</span>
+                    <small class="text-light d-block" style="line-height: 1;">Welcome back,</small>
+                    <span style="font-weight: 600; color: #fff;">{{ data.profile.name }}</span>
                 </div>
-                <img src="{{ data.profile.image }}" alt="Profile" class="rounded-circle border"
+                <img src="{{ data.profile.image }}" alt="Profile" class="rounded-circle border border-secondary"
                     style="width: 40px; height: 40px; object-fit: cover;">
             </div>
         </header>
@@ -264,8 +299,8 @@
                     <div class="col-12">
                         <div class="glass-panel p-4 h-100">
                             <div class="d-flex justify-content-between mb-4">
-                                <h5 class="fw-bold">Traffic Overview</h5>
-                                <span class="badge bg-primary bg-opacity-10 text-primary">Last 30 Days</span>
+                                <h5 class="fw-bold text-white">Traffic Overview</h5>
+                                <span class="badge bg-primary bg-opacity-25 text-white">Last 30 Days</span>
                             </div>
                             <div style="height: 300px;">
                                 <canvas id="dailyVisitsChart"></canvas>
@@ -276,7 +311,7 @@
                     <!-- Small Charts -->
                     <div class="col-md-4">
                         <div class="glass-panel p-4 h-100">
-                            <h5 class="fw-bold mb-3">Interactions</h5>
+                            <h5 class="fw-bold mb-3 text-white">Interactions</h5>
                             <div style="height: 200px;">
                                 <canvas id="interactionsChart"></canvas>
                             </div>
@@ -284,7 +319,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="glass-panel p-4 h-100">
-                            <h5 class="fw-bold mb-3">Top Pages</h5>
+                            <h5 class="fw-bold mb-3 text-white">Top Pages</h5>
                             <div style="height: 200px;">
                                 <canvas id="pageViewsChart"></canvas>
                             </div>
@@ -292,7 +327,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="glass-panel p-4 h-100">
-                            <h5 class="fw-bold mb-3">Section Popularity</h5>
+                            <h5 class="fw-bold mb-3 text-white">Section Popularity</h5>
                             <div style="height: 200px;">
                                 <canvas id="sectionViewsChart"></canvas>
                             </div>
@@ -307,7 +342,7 @@
                     <!-- Personal Info -->
                     <div class="col-lg-8">
                         <div class="glass-panel p-4">
-                            <h4 class="fw-bold mb-4">Personal Details</h4>
+                            <h4 class="fw-bold mb-4 text-white">Personal Details</h4>
                             <form method="POST" enctype="multipart/form-data">
                                 <input type="hidden" name="update_profile" value="1">
                                 <div class="row g-3">
@@ -342,23 +377,15 @@
                     <!-- Sidebar Assets -->
                     <div class="col-lg-4">
                         <div class="glass-panel p-4 mb-4">
-                            <h5 class="fw-bold mb-3">Profile Picture</h5>
+                            <h5 class="fw-bold mb-3 text-white">Profile Picture</h5>
                             <div class="text-center mb-3">
                                 <img id="profilePreview"
                                     src="{{ data.profile.image or 'https://via.placeholder.com/150' }}"
                                     class="rounded-circle shadow-lg mb-3"
-                                    style="width: 120px; height: 120px; object-fit: cover;">
+                                    style="width: 120px; height: 120px; object-fit: cover; border: 3px solid rgba(255,255,255,0.1);">
                             </div>
-                            <!-- Form wraps inputs but submits to same endpoint -->
                             <form method="POST" enctype="multipart/form-data">
                                 <input type="hidden" name="update_profile" value="1">
-                                <!-- Hidden inputs to preserve other data would be needed here in a real app, 
-                                     but since Jinja fills the main form, we assume user uses the main form for text.
-                                     This is for the UI demo. Merging forms is safer. -->
-
-                                <!-- Actually, keep it simple: Just visual inputs here, user must click Save in main form? 
-                                     Better: Put inputs inside the main form above. 
-                                     For this template, let's assume the form on left handles text, form on right handles files. -->
                                 <input type="file" class="form-control mb-2" name="image_file" id="imageFileInput">
                                 <input type="text" class="form-control mb-2" name="image"
                                     value="{{ data.profile.image }}" placeholder="Image URL">
@@ -375,11 +402,12 @@
                     <div class="col-12">
                         <div class="glass-panel p-4">
                             <div class="d-flex justify-content-between align-items-center mb-4">
-                                <h4 class="fw-bold m-0">Education History</h4>
+                                <h4 class="fw-bold m-0 text-white">Education History</h4>
                             </div>
 
                             <!-- Add New -->
-                            <form method="POST" class="mb-4 p-3 border border-dashed rounded bg-light bg-opacity-10">
+                            <form method="POST"
+                                class="mb-4 p-3 border border-dashed border-secondary rounded bg-dark bg-opacity-25">
                                 <input type="hidden" name="add_education" value="1">
                                 <div class="row g-2">
                                     <div class="col-md-4"><input type="text" class="form-control" name="new_edu_degree"
@@ -398,7 +426,7 @@
                                 <input type="hidden" name="update_education" value="1">
                                 <div class="table-responsive">
                                     <table class="table table-borderless align-middle">
-                                        <thead class="text-muted border-bottom">
+                                        <thead class="text-muted border-bottom border-secondary">
                                             <tr>
                                                 <th>Degree</th>
                                                 <th>Institution</th>
@@ -408,15 +436,15 @@
                                         </thead>
                                         <tbody>
                                             {% for edu in data.education %}
-                                            <tr class="border-bottom border-light">
+                                            <tr class="border-bottom border-secondary border-opacity-25">
                                                 <td><input type="text"
-                                                        class="form-control form-control-sm border-0 bg-transparent"
+                                                        class="form-control form-control-sm border-0 bg-transparent text-white"
                                                         name="edu_degree" value="{{ edu.degree }}"></td>
                                                 <td><input type="text"
-                                                        class="form-control form-control-sm border-0 bg-transparent"
+                                                        class="form-control form-control-sm border-0 bg-transparent text-white"
                                                         name="edu_institution" value="{{ edu.institution }}"></td>
                                                 <td><input type="text"
-                                                        class="form-control form-control-sm border-0 bg-transparent"
+                                                        class="form-control form-control-sm border-0 bg-transparent text-white"
                                                         name="edu_year" value="{{ edu.year }}"></td>
                                                 <td><button type="button" class="btn btn-sm btn-outline-danger"
                                                         onclick="confirmDelete('{{ loop.index0 }}', 'education')"><i
@@ -438,14 +466,14 @@
             <!-- SKILLS TAB -->
             <div class="tab-pane fade" id="v-pills-skills">
                 <div class="glass-panel p-4">
-                    <h4 class="fw-bold mb-3">Technical Skills</h4>
-                    <p class="text-muted mb-4">Enter one skill per line. You can optionally add a percentage like
+                    <h4 class="fw-bold mb-3 text-white">Technical Skills</h4>
+                    <p class="text-secondary mb-4">Enter one skill per line. You can optionally add a percentage like
                         <code>Python: 90</code>.
                     </p>
                     <form method="POST">
                         <input type="hidden" name="update_skills" value="1">
                         <textarea class="form-control font-monospace" name="skills" rows="15"
-                            style="background: var(--bg-body);">{{ data.skills | join('\n') }}</textarea>
+                            style="background: rgba(0,0,0,0.3); color: #a5b4fc;">{{ data.skills | join('\n') }}</textarea>
                         <div class="mt-3 text-end">
                             <button type="submit" class="btn btn-primary">Update Skills</button>
                         </div>
@@ -457,7 +485,7 @@
             <div class="tab-pane fade" id="v-pills-projects">
                 <!-- Add New Toggle -->
                 <div class="glass-panel p-4 mb-4">
-                    <h5 class="fw-bold mb-3">Add New Project</h5>
+                    <h5 class="fw-bold mb-3 text-white">Add New Project</h5>
                     <form method="POST" enctype="multipart/form-data">
                         <input type="hidden" name="add_project" value="1">
                         <div class="row g-3">
@@ -482,9 +510,9 @@
                             </div>
                             <div class="col-md-2">
                                 <div class="form-check pt-2">
-                                    <input class="form-check-input" type="checkbox" name="new_project_featured"
-                                        id="featNew">
-                                    <label class="form-check-label" for="featNew">Featured?</label>
+                                    <input class="form-check-input bg-dark border-secondary" type="checkbox"
+                                        name="new_project_featured" id="featNew">
+                                    <label class="form-check-label text-muted" for="featNew">Featured?</label>
                                 </div>
                             </div>
                             <div class="col-12 text-end">
@@ -534,7 +562,8 @@
                                     <div class="mb-3">
                                         <label class="text-sm-label">GitHub</label>
                                         <div class="input-group input-group-sm">
-                                            <span class="input-group-text bg-transparent border-end-0"><i
+                                            <span
+                                                class="input-group-text bg-transparent border-end-0 border-secondary text-muted"><i
                                                     class="fab fa-github"></i></span>
                                             <input type="text" class="form-control border-start-0 ps-0"
                                                 name="project_github_{{ loop.index0 }}"
@@ -543,12 +572,12 @@
                                     </div>
 
                                     <div
-                                        class="d-flex justify-content-between align-items-center mt-3 pt-3 border-top border-light">
+                                        class="d-flex justify-content-between align-items-center mt-3 pt-3 border-top border-secondary border-opacity-25">
                                         <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox"
+                                            <input class="form-check-input bg-dark border-secondary" type="checkbox"
                                                 name="project_featured_{{ loop.index0 }}" {% if project.featured
                                                 %}checked{% endif %}>
-                                            <label class="form-check-label small">Featured</label>
+                                            <label class="form-check-label small text-muted">Featured</label>
                                         </div>
                                         <button type="button" class="btn btn-sm btn-outline-danger rounded-circle"
                                             style="width: 32px; height: 32px; padding: 0;"
@@ -558,8 +587,6 @@
                                     </div>
                                 </div>
 
-                                <!-- Hidden inputs for image persistence logic handled by backend usually, 
-                                     but matching your template structure -->
                                 <input type="hidden" name="project_image_{{ loop.index0 }}" value="{{ project.image }}">
                             </div>
                         </div>
@@ -575,7 +602,7 @@
             <!-- CERTIFICATIONS TAB -->
             <div class="tab-pane fade" id="v-pills-certs">
                 <div class="glass-panel p-4">
-                    <h4 class="fw-bold mb-4">Certifications</h4>
+                    <h4 class="fw-bold mb-4 text-white">Certifications</h4>
 
                     <!-- Add Cert -->
                     <form method="POST" id="addCertForm" class="mb-4">
@@ -603,12 +630,13 @@
                         <input type="hidden" name="update_certs" value="1">
                         <div class="list-group list-group-flush">
                             {% for cert in data.certifications %}
-                            <div class="list-group-item bg-transparent px-0 py-3 border-bottom border-light">
+                            <div
+                                class="list-group-item bg-transparent px-0 py-3 border-bottom border-secondary border-opacity-25">
                                 <div class="row g-2">
                                     <div class="col-md-4">
                                         <input type="text" class="form-control fw-bold"
                                             name="cert_title_{{ loop.index0 }}" value="{{ cert.title }}">
-                                        <input type="text" class="form-control form-control-sm mt-1 text-muted"
+                                        <input type="text" class="form-control form-control-sm mt-1 text-secondary"
                                             name="cert_desc_{{ loop.index0 }}" value="{{ cert.description }}">
                                     </div>
                                     <div class="col-md-3">
@@ -640,7 +668,7 @@
             <!-- CONTACT TAB -->
             <div class="tab-pane fade" id="v-pills-contact">
                 <div class="glass-panel p-4" style="max-width: 800px; margin: 0 auto;">
-                    <h4 class="fw-bold mb-4">Contact Information</h4>
+                    <h4 class="fw-bold mb-4 text-white">Contact Information</h4>
                     <form method="POST">
                         <input type="hidden" name="update_contact" value="1">
                         <div class="row g-3">
@@ -654,7 +682,7 @@
                                     value="{{ data.contact.location }}">
                             </div>
                             <div class="col-12">
-                                <hr class="my-2 border-secondary opacity-10">
+                                <hr class="my-2 border-secondary opacity-25">
                             </div>
                             <div class="col-md-6">
                                 <label class="text-sm-label"><i class="fab fa-linkedin me-1"></i> LinkedIn</label>
@@ -690,26 +718,6 @@
 <!-- DATA & LOGIC -->
 <script id="analytics-data" type="application/json">{{ analytics | tojson | safe }}</script>
 <script>
-    // --- Dark Mode Logic ---
-    const themeToggle = document.getElementById('themeToggle');
-    const root = document.documentElement;
-    const icon = themeToggle.querySelector('i');
-
-    function applyTheme(theme) {
-        root.setAttribute('data-theme', theme);
-        localStorage.setItem('theme', theme);
-        icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
-    }
-
-    // Init Theme
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    applyTheme(savedTheme);
-
-    themeToggle.addEventListener('click', () => {
-        const current = root.getAttribute('data-theme');
-        applyTheme(current === 'light' ? 'dark' : 'light');
-    });
-
     // --- Sidebar Mobile Toggle ---
     const sidebar = document.getElementById('sidebar');
     const sidebarToggle = document.getElementById('sidebarToggle');
@@ -750,10 +758,10 @@
     // --- Chart.js Configuration ---
     const analytics = JSON.parse(document.getElementById('analytics-data').textContent);
 
-    // Global defaults
+    // Global defaults for Dark Mode
     Chart.defaults.font.family = "'Inter', sans-serif";
-    Chart.defaults.color = "#6b7280";
-    Chart.defaults.scale.grid.color = "rgba(200, 200, 200, 0.1)";
+    Chart.defaults.color = "#94a3b8"; // Slate 400
+    Chart.defaults.scale.grid.color = "rgba(255, 255, 255, 0.05)";
 
     // Gradient helper
     function getGradient(ctx, colorStart, colorEnd) {
@@ -778,7 +786,7 @@
                 tension: 0.4,
                 fill: true,
                 pointRadius: 4,
-                pointBackgroundColor: '#fff',
+                pointBackgroundColor: '#1e293b', // Match chart bg
                 pointBorderColor: '#6366f1'
             }]
         },
@@ -817,7 +825,8 @@
             datasets: [{
                 data: Object.values(analytics.section_views || {}),
                 backgroundColor: ['#6366f1', '#ec4899', '#10b981', '#f59e0b', '#3b82f6'],
-                borderWidth: 0
+                borderColor: '#1e293b', // Match panel bg
+                borderWidth: 2
             }]
         },
         options: {
