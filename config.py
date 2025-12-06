@@ -46,7 +46,10 @@ class ProductionConfig(Config):
     def SECRET_KEY(self):
         key = os.getenv('SECRET_KEY')
         if not key:
-            raise ValueError("No SECRET_KEY set for production configuration")
+            # Fallback for Render deployment if user forgets to set env var
+            # Generates a random key, but sessions will be lost on restart
+            import secrets
+            return secrets.token_hex(16)
         return key
 
 # Dictionary to map environment names directly to classes

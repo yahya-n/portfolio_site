@@ -4,6 +4,4 @@ __pycache__/
 .env
 .env.example
 *.pyc
-analytics.json
-data.json
-uploads/
+
