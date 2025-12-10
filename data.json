@@ -2,99 +2,123 @@
     "profile": {
         "name": "Yahya",
         "full_name": "Abdul Kuddoos Yahya",
-        "title": "Computer Science Engineer | Developer",
-        "intro": "Passionate about building scalable software and solving complex problems.",
-        "bio": "I am a Computer Science Engineer with a strong foundation in software development. I love exploring new technologies and building meaningful projects.",
+        "title": "Computer Science Engineer | Cybersecurity & Full-Stack Developer",
+        "intro": "Driven developer with a passion for building secure, scalable, and impactful digital solutions.",
+        "bio": "I am a B.Tech Computer Science and Engineering student specializing in Cyber Security with hands-on experience in secure web development, IoT automation, and modern software engineering. I enjoy solving real-world problems through technology, with strong interests in ethical hacking, cyber hygiene analysis, and AI-driven systems.",
         "image": "https://res.cloudinary.com/dneeuib5m/image/upload/v1765065170/portfolio_assets/fv5x1tf8nyyjif0v3g4e.png",
         "resume_link": "https://res.cloudinary.com/dneeuib5m/image/upload/v1765065171/portfolio_assets/yowd6i6nlumnmv3n4du3.pdf"
     },
     "education": [
         {
-            "degree": "B.Tech Computer Science and Engineering",
-            "institution": "Vel Tech University",
-            "year": "2023 - 2027"
+            "degree": "B.Tech in Computer Science and Engineering (Cyber Security)",
+            "institution": "Vel Tech University, Chennai",
+            "year": "2023 - 2027",
+            "details": "Relevant coursework: Cyber Security Essentials, Network Security, Web Development, Database Management, IoT Systems."
         }
     ],
     "skills": [
-        "Python: 90",
+        "Python",
         "Java",
         "C / C++",
         "HTML",
         "CSS",
         "JavaScript",
-        "Git & GitHub",
         "SQL",
-        "Django / Flask",
-        "Cloud basics",
-        "Data Structures & Algorithms"
+        "Git & GitHub",
+        "Django",
+        "Flask",
+        "Tailwind CSS",
+        "REST APIs",
+        "Cloud Basics",
+        "IoT Systems",
+        "Data Structures & Algorithms",
+        "Cybersecurity Fundamentals",
+        "Ethical Hacking",
+        "AI Automation",
+        "Prompt Engineering"
     ],
     "certifications": [
         {
-            "title": "Certified Python Developer",
-            "organization": "Python Institute",
-            "date": "2023",
-            "link": "#",
-            "description": "Professional certification in Python programming."
-        },
-        {
-            "title": "Introduction to cybersecurity",
-            "organization": "Cisco",
+            "title": "Introduction to Cyber Security",
+            "organization": "Cisco Networking Academy",
             "date": "2025",
             "link": "#",
-            "description": "Professional certification in Introduction to cybersecurity."
+            "description": "Covered cyber threats, secure practices, network protection, and digital safety."
         },
         {
-            "title": "Sample",
-            "organization": "Sample org",
+            "title": "Python Essentials",
+            "organization": "Cisco Networking Academy",
             "date": "2024",
             "link": "#",
-            "description": ""
+            "description": "Completed core Python programming and scripting fundamentals."
         },
         {
-            "title": "Sample2",
-            "organization": "Sample orgs",
+            "title": "Networking Fundamentals",
+            "organization": "Infosys Springboard",
             "date": "2024",
             "link": "#",
-            "description": "Hdhhdhfhfhdh"
+            "description": "Learned networking architecture, protocols, routing, and security basics."
+        },
+        {
+            "title": "Operating System Fundamentals",
+            "organization": "Infosys Springboard",
+            "date": "2024",
+            "link": "#",
+            "description": "Covered OS concepts, processes, scheduling, memory, and file management."
+        },
+        {
+            "title": "Software Engineering",
+            "organization": "Infosys Springboard",
+            "date": "2024",
+            "link": "#",
+            "description": "Explored SDLC models, design principles, and software development best practices."
         }
     ],
     "projects": [
         {
-            "title": "cyber hygiene analysis",
-            "description": "shfsjdks",
-            "technologies": "Python ,nmap , owsap",
+            "title": "Farmer–Consumer Direct Marketplace (Web Development)",
+            "description": "Built a platform enabling farmers to list produce and directly connect with customers, reducing middlemen interference and increasing transparency and profit margins.",
+            "technologies": "Django, Python, HTML, CSS, JavaScript",
             "github_link": "#",
             "image": "/static/uploads/dfd_2.png",
             "featured": true
         },
         {
-            "title": "Business LAnding Page",
-            "description": "business landing page for yoga online tuter",
-            "technologies": "Python , django , js , html, css",
+            "title": "Cyber Hygiene Analysis for Small Businesses",
+            "description": "Conducted full cyber hygiene assessments for small business websites, identifying weak security practices and implementing improvements like SSL enforcement, secure authentication, and basic protection mechanisms.",
+            "technologies": "Python, Nmap, OWASP Guidelines",
+            "github_link": "#",
+            "image": "/static/uploads/dfd_2.png",
+            "featured": true
+        },
+        {
+            "title": "Personalized Portfolio Builder",
+            "description": "Developed a customizable portfolio generator allowing students and freelancers to create responsive personal websites without coding knowledge.",
+            "technologies": "Django, Tailwind CSS, JavaScript",
+            "github_link": "#",
+            "image": "/static/uploads/dfd_2.png",
+            "featured": true
+        },
+        {
+            "title": "Business Landing Page (Yoga Tutor)",
+            "description": "Created a modern, SEO-optimized, responsive landing page for a yoga tutor with improved UI/UX, clear CTAs, and conversion-focused design.",
+            "technologies": "HTML, CSS, Django, JavaScript",
             "github_link": "#",
             "image": "/static/uploads/Green_Yellow_Modern_Yoga_Class_For_Beginners_Facebook_Ad.png",
             "featured": true
         },
         {
-            "title": "sample",
-            "description": "sample discription",
-            "technologies": "js , tailwind",
-            "github_link": "#",
-            "image": "/static/uploads/dfd_2.png",
-            "featured": true
-        },
-        {
-            "title": "sample 2",
-            "description": "a;sfkpoadskpkgkpewk",
-            "technologies": ";adfk;sdfka;f",
+            "title": "Vehicle Emergency Alert System (IoT)",
+            "description": "Built an IoT-based accident detection system using impact sensors and GPS that sends real-time emergency alerts with live location to registered contacts.",
+            "technologies": "IoT Sensors, Embedded C, Python, GPS Module",
             "github_link": "#",
             "image": "/static/uploads/pngwing.com.png",
             "featured": false
         },
         {
-            "title": "sample 3",
-            "description": "akfpkksffkgfkfdkgfkflmlgordkhps",
-            "technologies": "Python ,nmap , owsap",
+            "title": "Food Analysis & Freshness Detection System (IoT + AI)",
+            "description": "Developed an IoT system integrated with AI to analyze food freshness using temperature, humidity, gas sensors, and image recognition with spoilage alerts.",
+            "technologies": "IoT Sensors, Python, AI/ML Models",
             "github_link": "#",
             "image": "/static/uploads/dfd_0.png",
             "featured": false
